@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Utsave | Premium Event Venues in Gwalior</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -165,6 +164,16 @@
                 <button type="button" class="lang-btn active" id="btn-en" onclick="translatePage('en')">English</button>
                 <button type="button" class="lang-btn" id="btn-hi" onclick="translatePage('hi')">हिंदी</button>
             </div>
+
+            <!-- Hamburger Menu -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-menu-overlay" onclick="toggleMenu()"></div>
 
             <div id="google_translate_element" style="display:none !important;"></div>
 

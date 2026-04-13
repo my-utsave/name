@@ -50,6 +50,7 @@
     justify-content: space-between;
     max-width: 1200px;
     margin: auto;
+    width: 100%;
 }
 
 /* ===== LOGO MAIN STYLE ===== */
@@ -1828,11 +1829,14 @@ section {
 
     .navbar-content {
         position: relative;
+        justify-content: space-between;
     }
 
     .hamburger {
         display: flex;
         order: 3;
+        z-index: 1001;
+        margin-left: 15px;
     }
 
     .nav-links {
@@ -2154,6 +2158,19 @@ section {
     /* Booking Form Mobile */
     .booking-section {
         padding: 20px;
+    }
+
+    #customerForm {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    #customerForm>div {
+        grid-column: span 1 !important;
+    }
+
+    #customerForm>div[style*="grid-column: span 2"] {
+        grid-column: span 1 !important;
     }
 
     .services-grid {

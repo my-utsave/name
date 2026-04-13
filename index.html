@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Utsave | Premium Event Venues in Gwalior</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS to make the Services Dropdown work */
+        .dropdown {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .dropbtn {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #eee;
+            border-radius: 10px;
+            background: #fff;
+            text-align: left;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-radius: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1.5px solid #eee;
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .dropdown-content label:hover {
+            background: #f0f7ff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Ensure inputs fit within the grid */
+        input,
+        select {
+            box-sizing: border-box;
+        }
+
+
+
+
+
+
+
+
+        /* SERVICES GRID */
+        .services-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        /* SERVICE CARD */
+        .service-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
+        }
+
+        /* Hover */
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* IMAGE WRAPPER (IMPORTANT FIX) */
+        .service-img-wrapper {
+            width: 100%;
+            height: 200px;
+            /* Fix height — makes all images equal */
+            overflow: hidden;
+        }
+
+        /* IMAGE STYLE */
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Makes image fit nicely */
+            display: block;
+        }
+
+        /* CONTENT */
+        .service-content {
+            padding: 18px;
+        }
+
+        /* TITLE */
+        .service-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        /* DESCRIPTION */
+        .service-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-content">
+
+            <div class="logo">
+                <span class="logo-icon">🎉</span>
+
+                <div>
+                    <span class="logo-text">
+                        <span class="logo-main">My</span>
+                        <span class="logo-highlight">Utsave</span>
+                    </span>
+
+
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+
+                <a href="#categories">Venues</a>
+                <a href="#services">Additional Services</a>
+                <a href="#booking">Booking</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="language-toggle">
+                <button type="button" class="lang-btn active" id="btn-en" onclick="translatePage('en')">English</button>
+                <button type="button" class="lang-btn" id="btn-hi" onclick="translatePage('hi')">हिंदी</button>
+            </div>
+
+            <div id="google_translate_element" style="display:none !important;"></div>
+
+
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'en',
+                        includedLanguages: 'en,hi',
+                        autoDisplay: false
+                    }, 'google_translate_element');
+                }
+
+                function translatePage(langCode) {
+                    // 1. Google ke dropdown ko dhoondo
+                    const googleSelect = document.querySelector('.goog-te-combo');
+
+                    if (googleSelect) {
+                        googleSelect.value = langCode;
+                        googleSelect.dispatchEvent(new Event('change'));
+                        updateButtons(langCode);
+                    } else {
+                        // Agar Google abhi load nahi hua, toh 500ms baad fir try karo
+                        console.log("Waiting for Google Translate to load...");
+                        setTimeout(() => translatePage(langCode), 500);
+                    }
+                }
+
+                function updateButtons(langCode) {
+                    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+                    if (langCode === 'hi') document.getElementById('btn-hi').classList.add('active');
+                    else document.getElementById('btn-en').classList.add('active');
+                }
+            </script>
+            <script type="text/javascript"
+                src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+        <div class="hero-content">
+            <h1>Plan Your Event With My Utsave</h1>
+            <p>Gardens • Banquet Halls • Resorts • Cafes • Guest Houses</p>
+            <a href="#categories" class="hero-btn bounce">Explore Venues</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about fade-in">
+        <h2>Why Choose My Utsave?</h2>
+
+        <p>
+            My Utsave is Gwalior's trusted platform to discover and book the best
+            event venues including gardens, banquet halls, hotels and resorts.
+        </p>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="features fade-in">
+
+        <h2>Why People Love My Utsave</h2>
+
+        <div class="features-container">
+
+            <div class="feature-card slide-in-left">
+                <div class="feature-icon">🏛</div>
+                <h3>Premium Venues</h3>
+                <p>Hand-picked gardens, banquet halls and resorts across Gwalior.</p>
+                <span class="feature-number">150+ Venues</span>
+            </div>
+
+            <div class="feature-card slide-in-left">
+                <div class="feature-icon">💍</div>
+                <h3>Trusted by Couples</h3>
+                <p>Hundreds of couples trusted My Utsave to plan their big day.</p>
+                <span class="feature-number">1000+ Bookings</span>
+            </div>
+
+            <div class="feature-card slide-in-left">
+                <div class="feature-icon">⭐</div>
+                <h3>Top Rated Venues</h3>
+                <p>All venues are verified and rated by real customers.</p>
+                <span class="feature-number">4.8 Average Rating</span>
+            </div>
+
+            <div class="feature-card slide-in-left">
+                <div class="feature-icon">⚡</div>
+                <h3>Quick Booking</h3>
+                <p>Instant contact with venue owners via call or WhatsApp.</p>
+                <span class="feature-number">24/7 Support</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Poster Section -->
+    <section class="home-poster">
+        <img src="images/new poster1.png" alt="Event Management Poster">
+    </section>
+
+
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+
+        <h2>Browse Venue Categories Click Here</h2>
+        <p class="category-subtitle">Find the perfect venue for every celebration</p>
+
+        <div class="category-container">
+
+            <!-- Hotel -->
+            <a href="hotel.html" class="category-card">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Hotels">
+                <div class="category-overlay">
+                    <h3>Hotels</h3>
+                    <p>Luxury hotels for weddings & events</p>
+                </div>
+            </a>
+
+            <!-- Garden -->
+            <a href="garden.html" class="category-card">
+                <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353" alt="Gardens And Resorts">
+                <div class="category-overlay">
+                    <h3>Gardens And Resorts</h3>
+                    <p>Beautiful open gardens for big celebrations</p>
+                </div>
+            </a>
+
+
+
+            <!-- Cafe -->
+            <a href="cafe and clubs.html" class="category-card">
+                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8" alt="Cafe and clubs">
+                <div class="category-overlay">
+                    <h3>Cafes and clubs</h3>
+                    <p>Small celebrations and birthday parties</p>
+                </div>
+            </a>
+
+            <!-- Guest House -->
+            <a href="guesthouse.html" class="category-card">
+                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Guest House">
+                <div class="category-overlay">
+                    <h3>Guest House</h3>
+                    <p>Affordable venues for family events</p>
+                </div>
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="services-info" id="services">
+
+        <div class="services-header">
+            <h2>More Than Just Venues 🌟</h2>
+
+            <p>
+                Hum sirf venue hi nahi, aapke poore event ko yaadgaar banane ke liye ye services bhi provide karte hain,
+                Inka laabh uthane ke liye humse contact karen.
+            </p>
+        </div>
+
+        <div class="services-grid-container">
+
+            <!-- Photography -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc" alt="Photography">
+                </div>
+
+                <div class="service-content">
+                    <h3>📸 Professional Photography</h3>
+
+                    <p>
+                        Candid wedding photography, cinematic videos, and pre-wedding shoots in Gwalior's best
+                        locations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DJ -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="DJ">
+                </div>
+
+                <div class="service-content">
+                    <h3>🎧 DJ & Sound System</h3>
+
+                    <p>
+                        High-quality sound setup, LED floors, and the best DJs in town.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Invitations -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0" alt="Invitations">
+                </div>
+
+                <div class="service-content">
+                    <h3>📇 Designer Invitations</h3>
+
+                    <p>
+                        Customized digital invites and premium printed cards.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Decoration -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed" alt="Decoration">
+                </div>
+
+                <div class="service-content">
+                    <h3>✨ Theme Decoration</h3>
+
+                    <p>
+                        Floral setups, entrance decor, and stage lighting.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Catering -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=400" alt="Catering">
+                </div>
+
+                <div class="service-content">
+                    <h3>🍽️ Catering Services</h3>
+
+                    <p>
+                        Delicious veg and non-veg catering with customizable menus.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Makeup -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400" alt="Makeup">
+                </div>
+
+                <div class="service-content">
+                    <h3>💄 Makeup Artist</h3>
+
+                    <p>
+                        Professional bridal and party makeup artists.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mehendi -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1597225244660-1cd128c64284?w=400" alt="Mehendi">
+                </div>
+
+                <div class="service-content">
+                    <h3>🌿 Mehendi Artist</h3>
+
+                    <p>
+                        Beautiful mehendi designs for weddings and events.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Lighting -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=400" alt="Lighting">
+                </div>
+
+                <div class="service-content">
+                    <h3>💡 Lighting Setup</h3>
+
+                    <p>
+                        Creative LED lighting and decorative illumination.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Entertainment -->
+            <div class="service-card">
+                <div class="service-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=400" alt="Entertainment">
+                </div>
+
+                <div class="service-content">
+                    <h3>🎭 Entertainment Shows</h3>
+
+                    <p>
+                        Live singers, dancers, and entertainers.
+                    </p>
+                </div>
+            </div>
+
+        </div> <!-- KEEP THIS AT VERY END -->
+
+    </section>
+
+
+
+    <!-- POPUP OFFER -->
+    <div id="offerPopup" class="popup-overlay">
+        <div class="popup-box">
+
+            <span class="close-btn" onclick="closePopup()">×</span>
+
+            <h2>🎉 Special Launch Offer!</h2>
+
+            <h1 class="offer-text">
+                Get <span>20% OFF</span> on Every Booking
+            </h1>
+
+            <p>
+                Book your perfect venue today and save big on your celebrations.
+            </p>
+
+            <a href="#booking" class="popup-btn">
+                Book Now & Save 20%
+            </a>
+
+        </div>
+    </div>
+
+    <style>
+        /* Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Popup Box */
+        .popup-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            animation: popupFade 0.5s ease;
+        }
+
+        /* Heading */
+        .popup-box h2 {
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+
+        /* Offer Text */
+        .offer-text {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .offer-text span {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        /* Button */
+        .popup-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #ff6600;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* Animation */
+        @keyframes popupFade {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script>
+        /* Auto show popup after 2 seconds */
+        setTimeout(function () {
+            document.getElementById("offerPopup").style.display = "flex";
+        }, 2000);
+
+        /* Close popup */
+        function closePopup() {
+            document.getElementById("offerPopup").style.display = "none";
+        }
+    </script>
+
+
+
+
+
+
+    <section id="booking" class="booking-section fade-in"
+        style="padding: 60px 20px; background: #fff; border-radius: 30px; margin: 40px auto; max-width: 800px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); font-family: 'Poppins', sans-serif;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 2rem; color: #222; margin-bottom: 10px;">Book Your Celebration 🎉</h2>
+            <p style="color: #666;">Select services and we'll find the best deals in Gwalior for you.</p>
+        </div>
+
+        <form id="customerForm"
+            style="display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 20px;">
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">Full Name</label>
+                <input type="text" id="custName" placeholder="Enter your name" required
+                    style="width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; outline: none;">
+            </div>
+
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">WhatsApp Number</label>
+                <input type="tel" id="custPhone" placeholder="91XXXXXXXX" required
+                    style="width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; outline: none;">
+            </div>
+
+            <div style="grid-column: span 2;">
+                <label style="font-weight: 600; display: block; margin-bottom: 8px; color: #555;">Selected Venue
+                </label>
+                <div style="position: relative;">
+                    <span style="position: absolute; left: 12px; top: 12px;">🏨</span>
+                    <input type="text" id="selectedVenue" readonly
+                        placeholder="No venue selected. Please select from Venues page."
+                        style="width: 100%; padding: 12px 12px 12px 40px; border: 2px solid #007bff; border-radius: 10px; background-color: #f0f7ff; color: #007bff; font-weight: 600;">
+                </div>
+                <p id="venueDisplay" style="margin-top:8px; font-weight:600; color:#007bff; display:none;"></p>
+                <p id="venueWarning" style="color: red; font-size: 0.8rem; margin-top: 5px; display: none;">⚠️
+                    Please select a venue first.</p>
+            </div>
+
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">
+                    Event Type
+                </label>
+
+                <select id="custEvent" onchange="checkCustomEvent()" style="
+        width: 100%; 
+        padding: 12px; 
+        border: 1.5px solid #eee; 
+        border-radius: 10px; 
+        outline: none;
+        ">
+
+                    <option value="Wedding">Wedding</option>
+                    <option value="Birthday">Birthday Party</option>
+                    <option value="Anniversary">Anniversary</option>
+                    <option value="Corporate">Corporate Event</option>
+                    <option value="Other">Other (Write Your Event)</option>
+
+                </select>
+
+                <!-- Custom Event Input (Hidden Initially) -->
+                <input type="text" id="customEventInput" placeholder="Write your event type..." style="
+        width: 100%;
+        padding: 12px;
+        border: 1.5px solid #eee;
+        border-radius: 10px;
+        margin-top: 10px;
+        display: none;
+        outline: none;
+        ">
+            </div>
+
+            <script>
+                function checkCustomEvent() {
+                    let eventSelect = document.getElementById("custEvent");
+                    let customInput = document.getElementById("customEventInput");
+
+                    if (eventSelect.value === "Other") {
+                        customInput.style.display = "block";
+                    } else {
+                        customInput.style.display = "none";
+                    }
+                }
+
+
+                function getEventType() {
+                    let eventSelect = document.getElementById("custEvent").value;
+                    let customInput = document.getElementById("customEventInput").value;
+
+                    // Agar Other select hai aur user ne kuch likha hai
+                    if (eventSelect === "Other" && customInput.trim() !== "") {
+                        return customInput;  // User ka likha hua event
+                    }
+
+                    return eventSelect; // Normal dropdown event
+                }
+            </script>
+
+            <div class="services-container">
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">Additional Services:</label>
+                <div class="dropdown">
+                    <button type="button" class="dropbtn" id="serviceBtn">Select Services ▼</button>
+                    <div class="dropdown-content">
+                        <label><input type="checkbox" name="srv" value="Photography"> 📸 Photography</label>
+
+                        <label><input type="checkbox" name="srv" value="DJ"> 🎧 DJ & Sound</label>
+
+                        <label><input type="checkbox" name="srv" value="Cards"> 📇 Invitation Cards</label>
+
+                        <label><input type="checkbox" name="srv" value="Decoration"> ✨ Decoration</label>
+
+                        <label><input type="checkbox" name="srv" value="Lighting"> 💡 Lighting</label>
+
+                        <label><input type="checkbox" name="srv" value="Dance Floor"> 🕺 Dance Floor</label>
+
+                        <label><input type="checkbox" name="srv" value="Photo Booth"> 📸 Photo Booth</label>
+
+                        <label><input type="checkbox" name="srv" value="Fireworks"> 🎆 Fireworks</label>
+
+                        <label><input type="checkbox" name="srv" value="Cold Pyro"> 🔥 Cold Pyro</label>
+
+                        <label><input type="checkbox" name="srv" value="Catering"> 🍽 Catering</label>
+
+                        <label><input type="checkbox" name="srv" value="Makeup"> 💄 Bridal Makeup</label>
+
+                        <label><input type="checkbox" name="srv" value="Mehendi"> 🌿 Mehendi</label>
+
+                        <label><input type="checkbox" name="srv" value="Band"> 🥁 Band</label>
+
+                        <label><input type="checkbox" name="srv" value="Anchor"> 🎤 Anchor</label>
+
+                        <label><input type="checkbox" name="srv" value="Kids Entertainment"> 🧸 Kids
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">Event Date</label>
+                <input type="date" id="custDate" required
+                    style="width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px;">
+            </div>
+
+            <div>
+                <label style="font-weight: 600; display: block; margin-bottom: 8px;">Expected Guests</label>
+                <input type="number" id="custGuests" placeholder="e.g. 200" required
+                    style="width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px;">
+            </div>
+
+            <div style="grid-column: span 2; margin-top: 10px;">
+                <button type="submit" id="submitBtn"
+                    style="width: 100%; padding: 15px; background: linear-gradient(135deg, #007bff, #00c6ff); color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; font-size: 1rem;">
+                    Confirm & Check Availability
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcZLyqT0tjE6ho3KZPQxGTZFy6g42hwHfnjKxhOMa2t512LVxPbIRHM2ne9bId-DMW/exec';
+
+        document.getElementById('customerForm').addEventListener('submit', function (e) {
+
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Processing... ⏳";
+            btn.disabled = true;
+
+            // 1. Collect Form Values
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const event = getEventType();
+            const date = document.getElementById('custDate').value;
+            const guests = document.getElementById('custGuests').value;
+            const venue = document.getElementById('selectedVenue').value || "Not Selected";
+
+            // 2. Collect Checkbox Values
+            let selectedServices = [];
+
+            document.querySelectorAll('input[name="srv"]:checked')
+                .forEach((checkbox) => {
+                    selectedServices.push(checkbox.value);
+                });
+
+            const servicesString =
+                selectedServices.length > 0
+                    ? selectedServices.join(', ')
+                    : "None Selected";
+
+            // 3. Prepare Sheets URL
+            const finalRequestURL =
+                `${SCRIPT_URL}?venue=${encodeURIComponent(venue)}&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&event=${encodeURIComponent(event)}&date=${encodeURIComponent(date)}&guests=${encodeURIComponent(guests)}&services=${encodeURIComponent(servicesString)}`;
+
+            // 4. Prepare WhatsApp message and open it first
+            const myNumber = "919243108170";
+
+            const message = `MY UTSAVE NEW BOOKING
+
+I want a booking 
+
+Name: ${name}
+Phone: ${phone}
+Event: ${event}
+Date: ${date}
+Venue: ${venue}
+Guests: ${guests}
+Services: ${servicesString}
+
+GIVE ME BEST DEALS & AVAILABILITY
+
+Status: New Lead Received`;
+
+            const encodedMessage = encodeURIComponent(message);
+
+            const whatsappURL = `https://wa.me/${myNumber}?text=${encodedMessage}`;
+
+            const whatsappWindow = window.open(whatsappURL, "_blank");
+            if (!whatsappWindow) {
+                alert("Please allow popups for this page to open WhatsApp.");
+            } else {
+                alert("Details saved & WhatsApp opening 📱");
+            }
+
+            // 5. Send data to Google Sheets
+            fetch(finalRequestURL, { method: 'GET', mode: 'no-cors' })
+                .then(() => {
+                    console.log("Success: Sent to Sheet");
+                })
+                .catch(err => {
+                    console.error("Error saving data:", err);
+                })
+                .finally(() => {
+                    btn.innerText = "Confirm & Check Availability";
+                    btn.disabled = false;
+                    document.getElementById('customerForm').reset();
+                });
+
+        }); // ✅ THIS WAS MISSING
+
+        // Load venue from localStorage on page load
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const savedVenue = localStorage.getItem("selectedVenue");
+
+            if (savedVenue) {
+
+                document.getElementById("selectedVenue").value = savedVenue;
+
+            }
+
+        });
+
+
+
+
+    </script>
+
+
+
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+
+        <h2>Contact Us</h2>
+
+        <p>If you want to book a venue or have any questions, feel free to contact us.</p>
+
+        <div class="contact-buttons">
+
+            <a href="tel:9243108170" class="contact-btn call-btn">📞 Call Now</a>
+
+            <a href="https://wa.me/919243108170" target="_blank" class="contact-btn whatsapp-btn">
+                💬 WhatsApp
+            </a>
+
+            <a href="#" class="contact-btn location-btn">📍 Gwalior Location</a>
+
+        </div>
+
+
+
+        <h2> Follow Us</h2>
+        <p>Scan QR or call us directly for bookings</p>
+
+        <div class="contact-main">
+
+            <!-- QR Codes Section -->
+            <div class="qr-section">
+
+                <div class="qr-card">
+                    <h3>📷 Instagram</h3>
+
+                    <a href="https://www.instagram.com/my.utsav/" target="_blank" rel="noopener noreferrer">
+                        <img src="images/insta.png" alt="Instagram QR">
+                    </a>
+
+                    <p>Follow us on Instagram</p>
+                </div>
+
+
+                <div class="qr-card">
+                    <h3>💬 WhatsApp Channel</h3>
+                    <a href=" https://whatsapp.com/channel/0029VbBfGrI7z4ka1mUW4x01 " target="_blank"
+                        rel="noopener noreferrer">
+                        <img src="images/whatsapp.png" alt="WhatsApp Channel QR">
+                    </a>
+
+                    <p>Join our WhatsApp Channel</p>
+                </div>
+
+            </div>
+
+
+            <!-- Call Section -->
+            <div class="call-section">
+
+                <h3>📞 Call Us Directly</h3>
+                <h2>+919243108170</h2>
+
+                <p class="call-note">
+                    Available 9 AM – 9 PM
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 My Utsave Gwalior | Made in India 🇮🇳</p>
+
+    </footer>
+
+</body>
+
+</html>

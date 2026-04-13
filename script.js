@@ -4,20 +4,34 @@ function toggleMenu() {
     const hamburger = document.querySelector('.hamburger');
     const overlay = document.querySelector('.mobile-menu-overlay');
 
+    // Toggle active classes
     navLinks.classList.toggle('active');
     hamburger.classList.toggle('active');
-    overlay.style.display = navLinks.classList.contains('active') ? 'block' : 'none';
 
+    // Show/hide overlay
+    if (navLinks.classList.contains('active')) {
+        overlay.style.display = 'block';
+    } else {
+        overlay.style.display = 'none';
+    }
+}
+
+// Initialize mobile menu functionality
+document.addEventListener('DOMContentLoaded', function () {
     // Close menu when clicking on a link
-    const links = navLinks.querySelectorAll('a');
+    const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
         link.addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
             overlay.style.display = 'none';
         });
     });
-}
+});
 
 // ================= NAVBAR SMOOTH SCROLL + ACTIVE TAB =================
 

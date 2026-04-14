@@ -1,7 +1,21 @@
-
 /* ===============================
-   PREMIUM COLOR SYSTEM
+   PREMIUM COLOR SYSTEM & GENERAL MOBILE FIXES
 ================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 :root {
 
@@ -175,26 +189,48 @@
 
 
 /* --- Desktop vs Mobile Visibility --- */
-.nav-links-desktop, .language-toggle-desktop { display: flex; align-items: center; gap: 20px; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.hamburger span { width: 25px; height: 3px; background: #333; border-radius: 2px; }
+.nav-links-desktop,
+.language-toggle-desktop {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+}
 
 /* --- Side Nav (Drawer) --- */
 .side-nav {
     position: fixed;
     top: 0;
-    left: -280px; /* Shuruat mein left side chhupa hua */
+    left: -280px;
+    /* Shuruat mein left side chhupa hua */
     width: 280px;
     height: 100%;
     background: #fff;
     z-index: 2000;
     transition: 0.4s ease;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
 }
 
-.side-nav.active { left: 0; } /* Jab 'active' class add ho toh bahar aaye */
+.side-nav.active {
+    left: 0;
+}
+
+/* Jab 'active' class add ho toh bahar aaye */
 
 .side-nav-header {
     padding: 20px;
@@ -206,9 +242,18 @@
     font-weight: bold;
 }
 
-.close-btn { font-size: 30px; cursor: pointer; color: #666; }
+.close-btn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #666;
+}
 
-.side-nav-links { display: flex; flex-direction: column; padding: 20px 0; }
+.side-nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
 .side-nav-links a {
     padding: 15px 25px;
     text-decoration: none;
@@ -216,27 +261,69 @@
     font-size: 16px;
     border-left: 4px solid transparent;
 }
-.side-nav-links a:hover { background: #f9f9f9; border-left-color: #ff4757; }
 
-.side-nav-lang { padding: 20px; border-top: 1px solid #eee; margin-top: auto; }
-.side-nav-lang p { font-size: 14px; margin-bottom: 10px; color: #888; }
-.lang-row { display: flex; gap: 10px; }
+.side-nav-links a:hover {
+    background: #f9f9f9;
+    border-left-color: #ff4757;
+}
+
+.side-nav-lang {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    margin-top: auto;
+}
+
+.side-nav-lang p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.lang-row {
+    display: flex;
+    gap: 10px;
+}
 
 /* Overlay */
 .overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     display: none;
     z-index: 1500;
 }
-.overlay.active { display: block; }
+
+.overlay.active {
+    display: block;
+}
 
 /* --- Mobile view adjustments --- */
 @media (max-width: 768px) {
-    .nav-links-desktop, .language-toggle-desktop { display: none; } /* PC menu chhupao */
-    .hamburger { display: flex; } /* Teen line dikhao */
+
+    .nav-links-desktop,
+    .language-toggle-desktop {
+        display: none;
+    }
+
+    /* PC menu chhupao */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Teen line dikhao */
+    .hamburger span {
+        background: white;
+    }
+
+    /* Make hamburger visible on blue navbar */
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    /* Reduce padding on mobile */
 }
 
 
@@ -245,7 +332,8 @@
 /* --- General Navbar Fix --- */
 .navbar {
     height: 70px;
-    background: #1e3a5f; /* Aapki blue theme */
+    background: #1e3a5f;
+    /* Aapki blue theme */
     color: white;
     display: flex;
     align-items: center;
@@ -265,29 +353,57 @@
 }
 
 /* Logo */
-.logo { display: flex; align-items: center; gap: 8px; font-size: 24px; }
-.logo-highlight { color: #f39c12; font-weight: bold; }
-
-/* PC Menu (Desktop par bada dikhega) */
-.nav-links-pc { display: flex; gap: 25px; }
-.nav-links-pc a { 
-    color: white; 
-    text-decoration: none; 
-    font-size: 16px; 
-    font-weight: 500; 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
 }
 
-.lang-pc { display: flex; gap: 10px; }
+.logo-highlight {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* PC Menu (Desktop par bada dikhega) */
+.nav-links-pc {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links-pc a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.lang-pc {
+    display: flex;
+    gap: 10px;
+}
 
 /* Hamburger (Mobile only) */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.hamburger span { width: 25px; height: 3px; background: white; border-radius: 2px; }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
 
 /* --- SIDE BAR (DRAWER) --- */
 .side-nav {
     position: fixed;
     top: 0;
-    left: -280px; /* Chhupa hua */
+    left: -280px;
+    /* Chhupa hua */
     width: 280px;
     height: 100%;
     background: white;
@@ -295,10 +411,14 @@
     transition: 0.3s ease;
     display: flex;
     flex-direction: column;
-    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.side-nav.active { left: 0; } /* Khulne par */
+.side-nav.active {
+    left: 0;
+}
+
+/* Khulne par */
 
 .side-nav-header {
     background: #1e3a5f;
@@ -309,9 +429,17 @@
     font-size: 20px;
 }
 
-.close-btn { cursor: pointer; font-size: 28px; }
+.close-btn {
+    cursor: pointer;
+    font-size: 28px;
+}
 
-.side-nav-links { display: flex; flex-direction: column; padding: 20px 0; }
+.side-nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
 .side-nav-links a {
     padding: 15px 25px;
     color: #333;
@@ -320,23 +448,48 @@
     border-bottom: 1px solid #eee;
 }
 
-.side-nav-footer { padding: 20px; margin-top: auto; border-top: 1px solid #eee; }
-.lang-mob-row { display: flex; gap: 10px; margin-top: 10px; }
+.side-nav-footer {
+    padding: 20px;
+    margin-top: auto;
+    border-top: 1px solid #eee;
+}
+
+.lang-mob-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
 
 /* Overlay */
 .menu-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     display: none;
     z-index: 2500;
 }
-.menu-overlay.active { display: block; }
+
+.menu-overlay.active {
+    display: block;
+}
 
 /* --- Mobile View Adjustments --- */
 @media (max-width: 768px) {
-    .nav-links-pc, .lang-pc { display: none; } /* PC links chhupao */
-    .hamburger { display: flex; } /* 3 lines dikhao */
+
+    .nav-links-pc,
+    .lang-pc {
+        display: none;
+    }
+
+    /* PC links chhupao */
+    .hamburger {
+        display: flex;
+    }
+
+    /* 3 lines dikhao */
 }
 
 
@@ -344,11 +497,12 @@
 
 /* Navbar Fix */
 .navbar {
-    background: #ffffff !important; /* White background as per your image */
+    background: #ffffff !important;
+    /* White background as per your image */
     height: 80px;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links-pc {
@@ -358,7 +512,8 @@
 
 /* Links Color Fix (Taaki dikhne lagein) */
 .nav-links-pc a {
-    color: #1e3a5f !important; /* Dark Blue color */
+    color: #1e3a5f !important;
+    /* Dark Blue color */
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
@@ -370,7 +525,8 @@
 
 /* Language Button Fix */
 .lang-pc .lang-btn {
-    background: #d4af37; /* Gold color from your image */
+    background: #d4af37;
+    /* Gold color from your image */
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
@@ -385,8 +541,15 @@
 }
 
 @media (max-width: 768px) {
-    .nav-links-pc { display: none; }
-    .hamburger span { background: #1e3a5f; } /* Hamburger dikhne ke liye */
+    .nav-links-pc {
+        display: none;
+    }
+
+    .hamburger span {
+        background: #1e3a5f;
+    }
+
+    /* Hamburger dikhne ke liye */
 }
 
 
@@ -1631,6 +1794,20 @@ body {
     .booking-section h2 {
         font-size: 1.6rem;
     }
+
+    /* Contact buttons mobile */
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-btn {
+        width: 80%;
+        max-width: 300px;
+        margin: 10px 0;
+        padding: 12px 25px;
+        font-size: 14px;
+    }
 }
 
 
@@ -1668,11 +1845,12 @@ body {
 
 /* Individual Card Styling */
 .service-card {
-    flex: 0 0 300px; /* Fixed width for each card */
+    flex: 0 0 300px;
+    /* Fixed width for each card */
     margin: 0 15px;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -1684,7 +1862,8 @@ body {
 
 .service-content {
     padding: 15px;
-    white-space: normal; /* Fixes text wrapping */
+    white-space: normal;
+    /* Fixes text wrapping */
 }
 
 /* The Secret Sauce: Animation */
@@ -1692,8 +1871,10 @@ body {
     0% {
         transform: translateX(0);
     }
+
     100% {
-        transform: translateX(-50%); /* Resets halfway after the JS clone */
+        transform: translateX(-50%);
+        /* Resets halfway after the JS clone */
     }
 }
 
@@ -1702,7 +1883,8 @@ body {
 .services-info {
     padding: 60px 0;
     background-color: #fcfcfc;
-    overflow: hidden; /* Essential: Hides cards outside the screen */
+    overflow: hidden;
+    /* Essential: Hides cards outside the screen */
     width: 100%;
 }
 
@@ -1727,8 +1909,10 @@ body {
 
 /* --- The Scrolling Track --- */
 .services-grid-container {
-    display: flex; /* Puts all cards in one long row */
-    width: max-content; /* Allows the row to be as long as needed */
+    display: flex;
+    /* Puts all cards in one long row */
+    width: max-content;
+    /* Allows the row to be as long as needed */
     animation: scroll-left 40s linear infinite;
     padding: 20px 0;
 }
@@ -1740,14 +1924,16 @@ body {
 
 /* --- The Service Card Design --- */
 .service-card {
-    flex: 0 0 320px; /* Fixed width: Cards won't shrink or grow */
+    flex: 0 0 320px;
+    /* Fixed width: Cards won't shrink or grow */
     margin: 0 20px;
     background: #fff;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: transform 0.3s ease;
-    white-space: normal; /* Ensures text wraps inside the card */
+    white-space: normal;
+    /* Ensures text wraps inside the card */
 }
 
 /* Image Styling */
@@ -1784,9 +1970,10 @@ body {
     0% {
         transform: translateX(0);
     }
+
     100% {
         /* This moves exactly half the total width (the original set of cards) */
-        transform: translateX(-50%); 
+        transform: translateX(-50%);
     }
 }
 
@@ -1796,10 +1983,12 @@ body {
         flex: 0 0 260px;
         margin: 0 10px;
     }
+
     .services-header h2 {
         font-size: 1.8rem;
     }
 }
+
 /* Google Translate Button ko Clean Banane ke liye */
 /* 1. Google ke extra space ko zero karo */
 body {
@@ -2403,6 +2592,28 @@ section {
 
     .service-content p {
         font-size: 0.9rem;
+    }
+
+    /* Fix horizontal scrolling services on mobile */
+    .services-viewport {
+        overflow: visible;
+        padding: 20px 0;
+    }
+
+    .services-track {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: none;
+        /* Disable horizontal scroll on mobile */
+        width: 100%;
+    }
+
+    .service-card {
+        flex: 0 0 calc(50% - 10px);
+        /* 2 cards per row on mobile */
+        margin: 5px;
+        max-width: 300px;
     }
 
     /* Booking Form Mobile */

@@ -8,209 +8,131 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* CSS to make the Services Dropdown work */
-        .dropdown {
-            position: relative;
-            display: block;
-            width: 100%;
-        }
-
-        .dropbtn {
-            width: 100%;
-            padding: 12px;
-            border: 1.5px solid #eee;
-            border-radius: 10px;
-            background: #fff;
-            text-align: left;
-            cursor: pointer;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            min-width: 100%;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            border-radius: 10px;
-            max-height: 200px;
-            overflow-y: auto;
-            padding: 10px;
-            border: 1.5px solid #eee;
-        }
-
-        .dropdown-content label {
-            display: block;
-            padding: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .dropdown-content label:hover {
-            background: #f0f7ff;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Ensure inputs fit within the grid */
-        input,
-        select {
-            box-sizing: border-box;
-        }
-
-
-
-
-
-
-
-
-        /* SERVICES GRID */
-        .services-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px;
-        }
-
-        /* SERVICE CARD */
-        .service-card {
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: 0.3s ease;
-        }
-
-        /* Hover */
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        /* IMAGE WRAPPER (IMPORTANT FIX) */
-        .service-img-wrapper {
-            width: 100%;
-            height: 200px;
-            /* Fix height — makes all images equal */
-            overflow: hidden;
-        }
-
-        /* IMAGE STYLE */
-        .service-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Makes image fit nicely */
-            display: block;
-        }
-
-        /* CONTENT */
-        .service-content {
-            padding: 18px;
-        }
-
-        /* TITLE */
-        .service-content h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: #222;
-        }
-
-        /* DESCRIPTION */
-        .service-content p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-    </style>
+    
 
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="navbar-content">
-
-            <div class="logo">
-                <span class="logo-icon">🎉</span>
-
-                <div>
-                    <span class="logo-text">
-                        <span class="logo-main">My</span>
-                        <span class="logo-highlight">Utsave</span>
-                    </span>
 
 
-                </div>
+
+
+  <header class="navbar">
+    <div class="navbar-content">
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="logo">
+            <span class="logo-icon">🎉</span>
+            <div class="logo-text">
+                <span class="logo-main">My</span><span class="logo-highlight">Utsave</span>
             </div>
-            <nav class="nav-links">
-                <a href="#">Home</a>
+        </div>
 
-                <a href="#categories">Venues</a>
-                <a href="#services">Additional Services</a>
-                <a href="#booking">Booking</a>
-                <a href="#contact">Contact</a>
-            </nav>
 
-            <div class="language-toggle">
-                <button type="button" class="lang-btn active" id="btn-en" onclick="translatePage('en')">English</button>
-                <button type="button" class="lang-btn" id="btn-hi" onclick="translatePage('hi')">हिंदी</button>
+
+        <div id="google_translate_element" style="display:none !important;"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <nav class="nav-links-pc">
+            <a href="#">Home</a>
+            <a href="#categories">Venues</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="lang-pc">
+            <button class="lang-btn active" id="btn-en-pc" onclick="translatePage('en')">EN</button>
+            <button class="lang-btn" id="btn-hi-pc" onclick="translatePage('hi')">HI</button>
+        </div>
+    </div>
+
+    <div class="side-nav" id="sideNav">
+        <div class="side-nav-header">
+            <span>Menu</span>
+            <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        </div>
+        <div class="side-nav-links">
+            <a href="#" onclick="toggleMenu()">🏠 Home</a>
+            <a href="#categories" onclick="toggleMenu()">🏰 Venues</a>
+            <a href="#services" onclick="toggleMenu()">🌟 Services</a>
+            <a href="#contact" onclick="toggleMenu()">📞 Contact</a>
+        </div>
+        <div class="side-nav-footer">
+            <p>Select Language</p>
+            <div class="lang-mob-row">
+                <button class="lang-btn" onclick="translatePage('en')">English</button>
+                <button class="lang-btn" onclick="translatePage('hi')">हिंदी</button>
             </div>
+        </div>
+    </div>
 
-            <!-- Hamburger Menu -->
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+</header>
+<script type="text/javascript">
+    // 1. Translation Function
+    function translatePage(langCode) {
+        const googleSelect = document.querySelector('.goog-te-combo');
 
-            <!-- Mobile Menu Overlay -->
-            <div class="mobile-menu-overlay" onclick="toggleMenu()"></div>
+        if (googleSelect) {
+            googleSelect.value = langCode;
+            googleSelect.dispatchEvent(new Event('change'));
+            updateButtons(langCode);
+        } else {
+            console.log("Google Translate loading...");
+            setTimeout(() => translatePage(langCode), 500);
+        }
+    }
 
-            <div id="google_translate_element" style="display:none !important;"></div>
+    // 2. Button Active State Function
+    function updateButtons(langCode) {
+        const allBtns = document.querySelectorAll('.lang-btn');
+        allBtns.forEach(btn => btn.classList.remove('active'));
 
+        allBtns.forEach(btn => {
+            const text = btn.innerText.toUpperCase();
+            if (langCode === 'hi' && (text.includes('HI') || text.includes('हिंदी'))) {
+                btn.classList.add('active');
+            } 
+            else if (langCode === 'en' && (text.includes('EN') || text.includes('ENGLISH'))) {
+                btn.classList.add('active');
+            }
+        });
+    }
 
-            <script type="text/javascript">
-                function googleTranslateElementInit() {
-                    new google.translate.TranslateElement({
-                        pageLanguage: 'en',
-                        includedLanguages: 'en,hi',
-                        autoDisplay: false
-                    }, 'google_translate_element');
-                }
+    // 3. Mobile Menu Toggle (Sidebar)
+    function toggleMenu() {
+        const sideNav = document.getElementById('sideNav');
+        const overlay = document.getElementById('menuOverlay');
+        
+        if (sideNav && overlay) {
+            sideNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    }
 
-                function translatePage(langCode) {
-                    // 1. Google ke dropdown ko dhoondo
-                    const googleSelect = document.querySelector('.goog-te-combo');
+    // 4. Services Infinite Scroll Logic (Jo pehle discuss kiya tha)
+    document.addEventListener("DOMContentLoaded", function() {
+        const track = document.getElementById('servicesTrack');
+        if (track) {
+            track.innerHTML += track.innerHTML;
+        }
+    });
+</script>
 
-                    if (googleSelect) {
-                        googleSelect.value = langCode;
-                        googleSelect.dispatchEvent(new Event('change'));
-                        updateButtons(langCode);
-                    } else {
-                        // Agar Google abhi load nahi hua, toh 500ms baad fir try karo
-                        console.log("Waiting for Google Translate to load...");
-                        setTimeout(() => translatePage(langCode), 500);
-                    }
-                }
-
-                function updateButtons(langCode) {
-                    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-                    if (langCode === 'hi') document.getElementById('btn-hi').classList.add('active');
-                    else document.getElementById('btn-en').classList.add('active');
-                }
-            </script>
-            <script type="text/javascript"
-                src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </header>
 
 
     <!-- Hero Section -->
@@ -286,7 +208,8 @@
 
         <h2>Browse Venue Categories Click Here</h2>
         <p class="category-subtitle">Find the perfect venue for every celebration</p>
-
+     
+    <dib>
         <div class="category-container">
 
             <!-- Hotel -->
@@ -333,159 +256,83 @@
 
 
 
+
     <section class="services-info" id="services">
+    <div class="services-header">
+        <h2>More Than Just Venues 🌟</h2>
+        <p>
+            Hum sirf venue hi nahi, aapke poore event ko yaadgaar banane ke liye ye services bhi provide karte hain.
+        </p>
+    </div>
 
-        <div class="services-header">
-            <h2>More Than Just Venues 🌟</h2>
-
-            <p>
-                Hum sirf venue hi nahi, aapke poore event ko yaadgaar banane ke liye ye services bhi provide karte hain,
-                Inka laabh uthane ke liye humse contact karen.
-            </p>
-        </div>
-
-        <div class="services-grid-container">
-
-            <!-- Photography -->
+    <div class="services-viewport">
+        <div class="services-track" id="servicesTrack">
+            
             <div class="service-card">
                 <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc" alt="Photography">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400" alt="Photography">
                 </div>
-
                 <div class="service-content">
-                    <h3>📸 Professional Photography</h3>
-
-                    <p>
-                        Candid wedding photography, cinematic videos, and pre-wedding shoots in Gwalior's best
-                        locations.
-                    </p>
+                    <h3>📸 Photography</h3>
+                    <p>Candid wedding photography and cinematic videos in Gwalior.</p>
                 </div>
             </div>
 
-            <!-- DJ -->
             <div class="service-card">
                 <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="DJ">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400" alt="DJ">
                 </div>
-
                 <div class="service-content">
-                    <h3>🎧 DJ & Sound System</h3>
-
-                    <p>
-                        High-quality sound setup, LED floors, and the best DJs in town.
-                    </p>
+                    <h3>🎧 DJ & Sound</h3>
+                    <p>High-quality sound setup and the best DJs in town.</p>
                 </div>
             </div>
 
-            <!-- Invitations -->
             <div class="service-card">
                 <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0" alt="Invitations">
+                    <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400" alt="Invitations">
                 </div>
-
                 <div class="service-content">
-                    <h3>📇 Designer Invitations</h3>
-
-                    <p>
-                        Customized digital invites and premium printed cards.
-                    </p>
+                    <h3>📇 Invitations</h3>
+                    <p>Customized digital invites and premium printed cards.</p>
                 </div>
             </div>
 
-            <!-- Decoration -->
             <div class="service-card">
                 <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed" alt="Decoration">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Decoration">
                 </div>
-
                 <div class="service-content">
-                    <h3>✨ Theme Decoration</h3>
-
-                    <p>
-                        Floral setups, entrance decor, and stage lighting.
-                    </p>
+                    <h3>✨ Decoration</h3>
+                    <p>Floral setups, entrance decor, and stage lighting.</p>
                 </div>
             </div>
 
-            <!-- Catering -->
             <div class="service-card">
                 <div class="service-img-wrapper">
                     <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=400" alt="Catering">
                 </div>
-
                 <div class="service-content">
-                    <h3>🍽️ Catering Services</h3>
-
-                    <p>
-                        Delicious veg and non-veg catering with customizable menus.
-                    </p>
+                    <h3>🍽️ Catering</h3>
+                    <p>Delicious catering with customizable menus for your guests.</p>
                 </div>
             </div>
 
-            <!-- Makeup -->
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400" alt="Makeup">
-                </div>
-
-                <div class="service-content">
-                    <h3>💄 Makeup Artist</h3>
-
-                    <p>
-                        Professional bridal and party makeup artists.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Mehendi -->
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1597225244660-1cd128c64284?w=400" alt="Mehendi">
-                </div>
-
-                <div class="service-content">
-                    <h3>🌿 Mehendi Artist</h3>
-
-                    <p>
-                        Beautiful mehendi designs for weddings and events.
-                    </p>
-                </div>
-            </div>
+        </div>
+    </div>
+</section>
 
 
-            <!-- Lighting -->
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=400" alt="Lighting">
-                </div>
 
-                <div class="service-content">
-                    <h3>💡 Lighting Setup</h3>
-
-                    <p>
-                        Creative LED lighting and decorative illumination.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Entertainment -->
-            <div class="service-card">
-                <div class="service-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=400" alt="Entertainment">
-                </div>
-
-                <div class="service-content">
-                    <h3>🎭 Entertainment Shows</h3>
-
-                    <p>
-                        Live singers, dancers, and entertainers.
-                    </p>
-                </div>
-            </div>
-
-        </div> <!-- KEEP THIS AT VERY END -->
-
-    </section>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const track = document.getElementById('servicesTrack');
+    if (track) {
+        // Double the content to create a seamless loop
+        track.innerHTML += track.innerHTML;
+    }
+});
+</script>
 
 
 
@@ -944,6 +791,7 @@ Status: New Lead Received`;
 
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>

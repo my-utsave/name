@@ -218,7 +218,7 @@ html {
     /* Shuruat mein left side chhupa hua */
     width: 280px;
     height: 100%;
-    background: #fff;
+    background: #27a3dd;
     z-index: 2000;
     transition: 0.4s ease;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
@@ -234,7 +234,7 @@ html {
 
 .side-nav-header {
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #19adde;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -315,7 +315,7 @@ html {
 
     /* Teen line dikhao */
     .hamburger span {
-        background: white;
+        background: rgb(221, 30, 138);
     }
 
     /* Make hamburger visible on blue navbar */

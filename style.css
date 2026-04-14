@@ -168,65 +168,228 @@
 
 }
 
-/* Navbar Links */
-.nav-links {
+
+
+
+
+
+
+/* --- Desktop vs Mobile Visibility --- */
+.nav-links-desktop, .language-toggle-desktop { display: flex; align-items: center; gap: 20px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: #333; border-radius: 2px; }
+
+/* --- Side Nav (Drawer) --- */
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Shuruat mein left side chhupa hua */
+    width: 280px;
+    height: 100%;
+    background: #fff;
+    z-index: 2000;
+    transition: 0.4s ease;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
     display: flex;
-    gap: 25px;
+    flex-direction: column;
 }
 
-.nav-links a {
-    color: #ffffff;
+.side-nav.active { left: 0; } /* Jab 'active' class add ho toh bahar aaye */
+
+.side-nav-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close-btn { font-size: 30px; cursor: pointer; color: #666; }
+
+.side-nav-links { display: flex; flex-direction: column; padding: 20px 0; }
+.side-nav-links a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    border-left: 4px solid transparent;
+}
+.side-nav-links a:hover { background: #f9f9f9; border-left-color: #ff4757; }
+
+.side-nav-lang { padding: 20px; border-top: 1px solid #eee; margin-top: auto; }
+.side-nav-lang p { font-size: 14px; margin-bottom: 10px; color: #888; }
+.lang-row { display: flex; gap: 10px; }
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1500;
+}
+.overlay.active { display: block; }
+
+/* --- Mobile view adjustments --- */
+@media (max-width: 768px) {
+    .nav-links-desktop, .language-toggle-desktop { display: none; } /* PC menu chhupao */
+    .hamburger { display: flex; } /* Teen line dikhao */
+}
+
+
+
+
+/* --- General Navbar Fix --- */
+.navbar {
+    height: 70px;
+    background: #1e3a5f; /* Aapki blue theme */
+    color: white;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.navbar-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Logo */
+.logo { display: flex; align-items: center; gap: 8px; font-size: 24px; }
+.logo-highlight { color: #f39c12; font-weight: bold; }
+
+/* PC Menu (Desktop par bada dikhega) */
+.nav-links-pc { display: flex; gap: 25px; }
+.nav-links-pc a { 
+    color: white; 
+    text-decoration: none; 
+    font-size: 16px; 
+    font-weight: 500; 
+}
+
+.lang-pc { display: flex; gap: 10px; }
+
+/* Hamburger (Mobile only) */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: white; border-radius: 2px; }
+
+/* --- SIDE BAR (DRAWER) --- */
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Chhupa hua */
+    width: 280px;
+    height: 100%;
+    background: white;
+    z-index: 3000;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+}
+
+.side-nav.active { left: 0; } /* Khulne par */
+
+.side-nav-header {
+    background: #1e3a5f;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.close-btn { cursor: pointer; font-size: 28px; }
+
+.side-nav-links { display: flex; flex-direction: column; padding: 20px 0; }
+.side-nav-links a {
+    padding: 15px 25px;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.side-nav-footer { padding: 20px; margin-top: auto; border-top: 1px solid #eee; }
+.lang-mob-row { display: flex; gap: 10px; margin-top: 10px; }
+
+/* Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 2500;
+}
+.menu-overlay.active { display: block; }
+
+/* --- Mobile View Adjustments --- */
+@media (max-width: 768px) {
+    .nav-links-pc, .lang-pc { display: none; } /* PC links chhupao */
+    .hamburger { display: flex; } /* 3 lines dikhao */
+}
+
+
+
+
+/* Navbar Fix */
+.navbar {
+    background: #ffffff !important; /* White background as per your image */
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-links-pc {
+    display: flex;
+    gap: 20px;
+}
+
+/* Links Color Fix (Taaki dikhne lagein) */
+.nav-links-pc a {
+    color: #1e3a5f !important; /* Dark Blue color */
     text-decoration: none;
     font-weight: 600;
-    padding: 8px 12px;
-    transition: all 0.3s ease;
-    border-radius: 5px;
+    font-size: 16px;
 }
 
-.nav-links a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffd700;
+.nav-links-pc a:hover {
+    color: #ff4757 !important;
 }
 
-/* Language Toggle */
-.language-toggle {
-    display: flex;
-    gap: 10px;
-}
-
-.lang-btn {
-    padding: 6px 12px;
-    border-radius: 5px;
+/* Language Button Fix */
+.lang-pc .lang-btn {
+    background: #d4af37; /* Gold color from your image */
     border: none;
-    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #1e3a5f;
 }
 
-.lang-btn:hover,
-.lang-btn.active {
-    background: #ffd700;
-    color: #1a3a5f;
+.lang-pc .lang-btn.active {
+    background: #1e3a5f;
+    color: white;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-    .navbar-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .language-toggle {
-        justify-content: center;
-    }
+    .nav-links-pc { display: none; }
+    .hamburger span { background: #1e3a5f; } /* Hamburger dikhne ke liye */
 }
+
+
 
 /* Hero */
 .hero {
@@ -1476,62 +1639,138 @@ body {
 
 /* Services Info Section Styling */
 /* --- Services Info Section --- */
+/* ===== SERVICES LEFT TO RIGHT ANIMATION ===== */
+
+/* ===== CONTINUOUS SERVICES SCROLL FINAL ===== */
+
+
+
+
+/* Container to hide the horizontal scrollbar */
+.services-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
+    background: #fff;
+}
+
+/* The moving track */
+.services-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 30s linear infinite;
+}
+
+/* Pause on hover so people can read */
+.services-track:hover {
+    animation-play-state: paused;
+}
+
+/* Individual Card Styling */
+.service-card {
+    flex: 0 0 300px; /* Fixed width for each card */
+    margin: 0 15px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.service-img-wrapper img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 15px;
+    white-space: normal; /* Fixes text wrapping */
+}
+
+/* The Secret Sauce: Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Resets halfway after the JS clone */
+    }
+}
+
+
+/* --- Services Section Base --- */
 .services-info {
-    padding: 80px 20px;
-    background: #f9f9f9;
+    padding: 60px 0;
+    background-color: #fcfcfc;
+    overflow: hidden; /* Essential: Hides cards outside the screen */
+    width: 100%;
 }
 
 .services-header {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 50px;
+    margin-bottom: 40px;
+    padding: 0 20px;
 }
 
 .services-header h2 {
-    font-size: 2.5rem;
-    color: #222;
-    margin-bottom: 15px;
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.services-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
+.services-header p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 700px;
     margin: 0 auto;
 }
 
-/* Card Styling */
+/* --- The Scrolling Track --- */
+.services-grid-container {
+    display: flex; /* Puts all cards in one long row */
+    width: max-content; /* Allows the row to be as long as needed */
+    animation: scroll-left 40s linear infinite;
+    padding: 20px 0;
+}
+
+/* Pause when user wants to read a card */
+.services-grid-container:hover {
+    animation-play-state: paused;
+}
+
+/* --- The Service Card Design --- */
 .service-card {
+    flex: 0 0 320px; /* Fixed width: Cards won't shrink or grow */
+    margin: 0 20px;
     background: #fff;
-    border-radius: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-in-out;
-    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+    white-space: normal; /* Ensures text wraps inside the card */
 }
 
-.service-img-wrapper {
-    overflow: hidden;
-    /* For zoom effect */
-    height: 200px;
-}
-
-.service-card img {
+/* Image Styling */
+.service-img-wrapper img {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    display: block;
 }
 
+/* Content inside the card */
 .service-content {
-    padding: 25px;
+    padding: 20px;
+    text-align: left;
 }
 
 .service-content h3 {
-    font-size: 1.3rem;
-    color: #007bff;
+    font-size: 1.25rem;
+    color: #222;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .service-content p {
@@ -1540,97 +1779,27 @@ body {
     line-height: 1.6;
 }
 
-/* --- Hover Effects --- */
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border-color: #007bff;
+/* --- The Animation Engine --- */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* This moves exactly half the total width (the original set of cards) */
+        transform: translateX(-50%); 
+    }
 }
 
-.service-card:hover img {
-    transform: scale(1.1);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Responsive: Smaller cards on mobile */
+@media (max-width: 600px) {
+    .service-card {
+        flex: 0 0 260px;
+        margin: 0 10px;
+    }
     .services-header h2 {
         font-size: 1.8rem;
     }
-
-    .services-grid-container {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 18px;
-        padding-bottom: 10px;
-        margin: 0 auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .services-grid-container::-webkit-scrollbar {
-        height: 8px;
-    }
-
-    .services-grid-container::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.05);
-        border-radius: 8px;
-    }
-
-    .services-grid-container::-webkit-scrollbar-thumb {
-        background: rgba(0, 123, 255, 0.3);
-        border-radius: 8px;
-    }
-
-    .service-card {
-        min-width: 280px;
-        flex: 0 0 auto;
-        scroll-snap-align: start;
-        opacity: 0;
-        transform: translateX(20px);
-        animation: slideInRight 0.45s ease forwards;
-    }
-
-    .service-card:nth-child(1) {
-        animation-delay: 0.05s;
-    }
-
-    .service-card:nth-child(2) {
-        animation-delay: 0.10s;
-    }
-
-    .service-card:nth-child(3) {
-        animation-delay: 0.15s;
-    }
-
-    .service-card:nth-child(4) {
-        animation-delay: 0.20s;
-    }
-
-    .service-card:nth-child(5) {
-        animation-delay: 0.25s;
-    }
-
-    .service-card:nth-child(6) {
-        animation-delay: 0.30s;
-    }
-
-    .service-card:nth-child(7) {
-        animation-delay: 0.35s;
-    }
-
-    .service-card:nth-child(8) {
-        animation-delay: 0.40s;
-    }
-
-    @keyframes slideInRight {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
 }
-
 /* Google Translate Button ko Clean Banane ke liye */
 /* 1. Google ke extra space ko zero karo */
 body {

@@ -1,20 +1,5 @@
 // ================= MOBILE MENU TOGGLE =================
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    const hamburger = document.querySelector('.hamburger');
-    const overlay = document.querySelector('.mobile-menu-overlay');
-
-    // Toggle active classes
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-
-    // Show/hide overlay
-    if (navLinks.classList.contains('active')) {
-        overlay.style.display = 'block';
-    } else {
-        overlay.style.display = 'none';
-    }
-}
+// (Removed conflicting toggleMenu - using the one from HTML)
 
 // Initialize mobile menu functionality
 document.addEventListener('DOMContentLoaded', function () {

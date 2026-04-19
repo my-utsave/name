@@ -315,7 +315,8 @@ html {
 
     /* Teen line dikhao */
     .hamburger span {
-        background: rgb(221, 30, 138);
+        background: #ffffff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
 
     /* Make hamburger visible on blue navbar */
@@ -2596,24 +2597,21 @@ section {
 
     /* Fix horizontal scrolling services on mobile */
     .services-viewport {
-        overflow: visible;
+        overflow: hidden;
         padding: 20px 0;
     }
 
     .services-track {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        animation: none;
-        /* Disable horizontal scroll on mobile */
-        width: 100%;
+        width: max-content;
+        animation: scroll-left 30s linear infinite;
+        /* Keep horizontal scroll on mobile */
     }
 
     .service-card {
-        flex: 0 0 calc(50% - 10px);
-        /* 2 cards per row on mobile */
-        margin: 5px;
-        max-width: 300px;
+        flex: 0 0 280px;
+        /* Slightly smaller on mobile */
+        margin: 0 10px;
     }
 
     /* Booking Form Mobile */
